@@ -111,7 +111,7 @@ class MyClass extends \pocketmine\plugin\PluginBase{
 
    public function sendMoneyPopup(\pocketmine\Player $player)
    {
-     $player->sendPopup(EconomyPlus::getInstance()->getMoney($player));
+     $player->sendPopup(EconomyPlus::getInstance()->getMoney($player, $this));
    }
 }
 ?>
