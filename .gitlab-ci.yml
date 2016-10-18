@@ -5,8 +5,9 @@ stages:
 phar:
   stage: package
   script:
-   - cd /builds/Pogogo007/EconomyPlus
-   - php scripts/mkplugin.php EconomyPlus EconomyPlus/src
+   - cd /builds/Pogogo007/
+   - php EconomyPlus/scripts/mkplugin.php EconomyPlus EconomyPlus/src
+   - mv EconomyPlus*.phar EconomyPlus/
   artifacts:
    paths:
      - EconomyPlus*.phar
