@@ -49,6 +49,8 @@ class EconomyPlus extends PluginBase implements Listener{
   public $perm = C::GRAY . "[" . C::RED . "Perm" . C::GRAY . "]";
 
   private $toplist;
+
+  public $debug = false;
   
   public function onLoad(){
     $this->saveAllLangs();
@@ -58,12 +60,13 @@ class EconomyPlus extends PluginBase implements Listener{
     $auto = true;
     @mkdir($this->getDataFolder());
     if(!file_exists($this->getServer()->getDataPath() . "/plugins/EconomyPlus.phar")){
-      $this->getLogger()->warning("Please insure that you have renamed EconomyPlus_vX.X.X to 'EconomyPlus.phar'");
+      $this->getLogger()->warning("Please insure that you have renamed EconomyPlus_v" . $this->getDescription()->getVersion() . " to 'EconomyPlus.phar'");
       $auto = false;
     }
     $this->saveDefaultConfig();
     static::$api = new EconomyPlusAPI($this);
     $this->cfg = new Config($this->getDataFolder() . "/config.yml", Config::YAML);
+    $this->debug = true;
     $this->lang = $this->cfg->get("Default-Lang");
     $this->shop = str_replace("@", "§", $this->cfg->get("ShopPrefix"));
     $this->sell = str_replace("@", "§", $this->cfg->get("SellPrefix"));
@@ -80,6 +83,7 @@ class EconomyPlus extends PluginBase implements Listener{
     $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
     $this->getLogger()->info(C::YELLOW . "EconomyPlus v" . $this->getDescription()->getVersion() . " Enabled!");
     $this->importEconomyAPI();
+    EconomyPlus::getInstance()->getMoney("jake", $this);
   }
 
   public function saveAllLangs(){

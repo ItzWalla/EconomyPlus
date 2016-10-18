@@ -1,6 +1,5 @@
 <?php
 namespace EconomyPlus\API;
-
 use pocketmine\Player;
 use pocketmine\Server;
 
@@ -10,6 +9,8 @@ use pocketmine\plugin\Plugin;
 
 use EconomyPlus\EconomyPlus;
 use EconomyPlus\EconomyPlayer;
+
+use pocketmine\utils\TextFormat;
 
 /* Copyright (C) ImagicalGamer - All Rights Reserved
  * Unauthorized copying of this file, via any medium is strictly prohibited
@@ -24,20 +25,29 @@ class EconomyPlusAPI extends PluginBase{
     $this->plugin = $plugin;
   }
 
-  public function getMoney($player)
+  public function getMoney($player, Plugin $plugin)
   {
     if($player instanceof Player)
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player = new EconomyPlayer($this->plugin, $player->getName());
       return $player->getMoney();
     }
     else if(is_string($player))
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player = new EconomyPlayer($this->plugin, $player);
       return $player->getMoney();
     }
     else if($player instanceof EconomyPlayer)
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       return $player->getMoney();
     }
     else{
@@ -45,20 +55,29 @@ class EconomyPlusAPI extends PluginBase{
     }
   }
 
-  public function setMoney($player, int $amount)
+  public function setMoney($player, int $amount, Plugin $plugin)
   {
     if($player instanceof Player)
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player = new EconomyPlayer($this->plugin, $player->getName());
       $player->setMoney($amount);
     }
-    else if($player instanceof String)
+    else if(is_string($player))
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player = new EconomyPlayer($this->plugin, $player);
       $player->setMoney($amount);
     }
     else if($player instanceof EconomyPlayer)
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player->setMoney($amount);
     }
     else{
@@ -66,20 +85,29 @@ class EconomyPlusAPI extends PluginBase{
     }
   }
 
-  public function reduceMoney($player, int $amount)
+  public function reduceMoney($player, int $amount, Plugin $plugin)
   {
     if($player instanceof Player)
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player = new EconomyPlayer($this->plugin, $player->getName());
       $player->subtractMoney($amount);
     }
     else if(is_string($player))
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player = new EconomyPlayer($this->plugin, $player);
       $player->subtractMoney($amount);
     }
     else if($player instanceof EconomyPlayer)
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player->subtractMoney($amount);
     }
     else{
@@ -87,20 +115,29 @@ class EconomyPlusAPI extends PluginBase{
     }
   }
 
-  public function addMoney($player, int $amount)
+  public function addMoney($player, int $amount, Plugin $plugin)
   {
     if($player instanceof Player)
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player = new EconomyPlayer($this->plugin, $player->getName());
       $player->addMoney($amount);
     }
     else if(is_string($player))
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player = new EconomyPlayer($this->player, $player);
       $player->addMoney($amount);
     }
     else if($player instanceof EconomyPlayer)
     {
+      if($this->plugin->debug){
+        echo(TextFormat::toANSI(TextFormat::AQUA . "[" . date("H:i:s", time()) . "] " . TextFormat::RESET . TextFormat::GRAY . "[Server thread/DEBUG]: [EconomyPlus] " .$plugin->getName() . " called method " . __METHOD__ . "()\n"));
+      }
       $player->addMoney($amount);
     }
     else{
