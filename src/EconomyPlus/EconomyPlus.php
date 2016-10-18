@@ -83,7 +83,6 @@ class EconomyPlus extends PluginBase implements Listener{
     $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
     $this->getLogger()->info(C::YELLOW . "EconomyPlus v" . $this->getDescription()->getVersion() . " Enabled!");
     $this->importEconomyAPI();
-    EconomyPlus::getInstance()->getMoney("jake", $this);
   }
 
   public function saveAllLangs(){
